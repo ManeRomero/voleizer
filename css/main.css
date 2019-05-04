@@ -1,0 +1,297 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Oswald', sans-serif
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
+    background: #005C97;
+    background: -webkit-linear-gradient(to right, #36954a, rgb(60, 151, 0));
+    background: linear-gradient(to right, #36954a, rgb(60, 151, 0));
+}
+
+header h1 {
+    font-size: 12vw;
+    padding: 5vh auto 0 auto;
+    color: gold;
+    border-bottom: 3px solid gold
+}
+
+h1 {
+    text-align: center;
+    letter-spacing: 1px
+}
+
+header h2 {
+    font-size: 4vw;
+    color: rgba(255, 217, 0, 0.527);
+    letter-spacing: 1px
+}
+
+section {
+    min-height: 60vh;
+    background-color: rgb(240, 245, 255)
+}
+
+section>div {
+    padding: 2vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+section>div+div {
+    flex-flow: wrap;
+    justify-content: center
+}
+
+section>div+div div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 10%;
+    padding: 1vh;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.25);
+    border-radius: 10px
+}
+section>div+div div:hover {
+    transform: translateY(-1vh);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.38);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.38);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.38);
+}
+
+.team {
+    position: absolute;
+    top: -2vh
+}
+
+section>div+div div img {
+    height: 10vw;
+}
+
+section>div div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 40%;
+    margin: 2%;
+    position: relative
+}
+
+small {
+    color: rgb(61, 61, 61);
+    letter-spacing: 1px;
+    text-align: center
+}
+
+a {
+    text-decoration: none;
+    text-align: center;
+    width: 50%;
+    margin: auto
+}
+
+.player1 {
+    background-color: #ffdd1cea
+}
+
+.player2 {
+    background-color: #33b300a4
+}
+
+span {
+    text-align: right;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px;
+    border: 1px solid rgba(139, 0, 0, 0.548);
+    border-radius: 100%;
+    background-color: white
+}
+
+.evento {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    flex-direction: row
+}
+
+footer {
+    text-align: center
+}
+
+.seleccionado {
+    position: relative;
+    flex-direction: column;
+    align-items: center
+}
+
+.seleccionado img {
+    width: 30vw;
+    height: auto
+}
+
+.escudoSeleccion {
+    margin-top: 5vh
+}
+
+.botonPropio {
+    height: 20vh;
+    width: 40%;
+    border-radius: 17vh;
+    border: 1px solid grey;
+    margin: 1%;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    transition: .3s;
+    font-weight: bolder;
+    font-size: 200%;
+    letter-spacing: 1px
+}
+
+.seleccionado span {
+    position: absolute;
+    top: -10vh;
+    cursor: pointer;
+    padding: 0.1vw;
+    color: rgb(71, 0, 0);
+    transform: scale(.3);
+    font-size: 300%
+}
+
+.seleccionado span:hover {
+    font-size: 330%
+}
+
+.botonPropio:hover {
+    border: 5px solid;
+    font-size: 150%;
+    text-decoration: none;
+    transition: .3s
+}
+
+.botonPropio:hover i {
+    font-size: 100px;
+    margin: auto;
+    opacity: .25
+}
+
+.botonPropio i {
+    font-size: 2em;
+    position: absolute;
+    margin: 6vw;
+    overflow: hidden;
+}
+
+.b01 {
+    background-color: rgb(255, 238, 0);
+    color: black
+}
+
+.b02 {
+    background-color: rgb(255, 205, 42);
+    color: black
+}
+
+.b03 {
+    background-color: rgba(30, 182, 37, 0.582);
+    color: black
+}
+
+.b04 {
+    background-color: rgba(9, 97, 13, 0.582);
+    color: black
+}
+
+.toggler{
+    position: absolute;
+    padding: 1vw;
+    border: 1px solid grey;
+    left: 0;
+    cursor: pointer;
+    font-size: 80%;
+    background: rgb(216, 213, 213)
+}
+
+.clubs{
+    background-color: #c6f0d1
+}
+.selecciones{
+    background-color: #f1fc90
+}
+
+.imgSelecciones {
+    width: 100%;
+    height: auto;
+}
+
+@media (max-width: 600px) {
+
+    section>div {
+        display: flex;
+        flex-direction: column;
+        align-items: center
+    }
+
+    section>div+div div {
+        width: 25%
+    }
+
+    .escudoSeleccion {
+        width: 40vw
+    }
+
+    .b01,
+    .b02,
+    .b03,
+    .b04 {
+        font-size: 90%;
+        margin: 1vh
+    }
+
+    .bt01:hover,
+    .bt02:hover,
+    .bt03:hover,
+    .bt04:hover {
+        font-size: 150%;
+        padding: 2vh
+    }
+
+    span.botonPropio {
+        top: 0;
+        right: -5vh;
+        width: 100px;
+        height: 100px;
+        font-size: 200%
+    }
+
+    header h2 {
+        font-size: 150%
+    }
+
+    section>div div {
+        width: 80%
+    }
+
+    .botonPropio{
+        font-size: 150%
+    }
+
+    .botonPropio i {
+        font-size: 2em;
+        position: absolute;
+        margin: 12vw
+    }
+}

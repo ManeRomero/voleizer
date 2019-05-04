@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Voleizer: Haz tus Leyendas a voleo</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link rel="stylesheet" href="./css/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <h1>VOLEIZER</h1>
+        <h2>Haz tus leyendas a voleo!</h2>
+    </header>
+
+    <section id="partidos">
+        <div v-if="modoClubs" class="clubs">
+            <h3 @click="modoClubs=false, modoSelecciones=true,
+             equipo1.name='', equipo2.name='', equipo1.escudo='', equipo2.escudo='',
+             seleccion1=false, seleccion2=false" class="toggler" v-bind:title="'Ir a ' + titleSelecciones">
+                {{titleClubs.toUpperCase()}} <i class="fas fa-undo"></i></h3>
+
+            <div v-if="!equipo1.name">
+                <small class="team">Club 1</small>
+                <a href="#" class="botonPropio b01" title="Elige tu Leyenda a voleo" @click="voleo1">
+                    <i class="fas fa-futbol"></i>{{title1.toUpperCase()}}</a>
+                <a href="#" class="botonPropio b02" title="Elige tu Leyenda"
+                    @click="seleccion1=true, seleccion2=false, seleccion3=false, seleccion4=false">
+                    <i class="fas fa-trophy"></i>{{title2.toUpperCase()}}</a>
+            </div>
+
+            <div v-if="equipo1.name.length>1" class="seleccionado">
+                <small class="team">Club 1</small>
+                <span class="botonPropio" @click="equipo1.name='', equipo1.escudo=''"
+                    v-bind:title="'Haz click aquí para deseleccionar el ' + equipo1.name">X</span>
+                <img v-bind:src="'./img/' + equipo1.escudo + '.png'" alt="'Escudo del equipo:'  + equipo1.name"
+                    class="escudoSeleccion">
+                <h1>{{equipo1.name}}</h1>
+            </div>
+
+            <div v-if="!equipo2.name">
+                <small class="team">Club 2</small>
+
+                <a href="#" class="botonPropio b03" title="Elige tu Leyenda a voleo" @click="voleo2">
+                    <i class="fas fa-futbol"></i>{{title1.toUpperCase()}}</a>
+                <a href="#" class="botonPropio b04" title="Elige tu Leyenda" @click="seleccion1=false, seleccion2=true">
+                    <i class="fas fa-trophy"></i>{{title2.toUpperCase()}}</a>
+            </div>
+
+            <div v-if="equipo2.name.length>1" class="seleccionado">
+                <small class="team">Club 2</small>
+                <span class="botonPropio" @click="equipo2.name='', equipo2.escudo=''"
+                    v-bind:title="'Haz click aquí para deseleccionar el ' + equipo2.name">X</span>
+                <img v-bind:src="'./img/' + equipo2.escudo + '.png'" alt="'Escudo del equipo:'  + equipo2.name"
+                    class="escudoSeleccion">
+                <h1>{{equipo2.name}}</h1>
+            </div>
+        </div>
+
+        <div v-if="modoSelecciones" class="selecciones">
+            <h3 @click="modoClubs=true, modoSelecciones=false,
+                equipo1.name='', equipo2.name='', equipo1.escudo='', equipo2.escudo='',
+                seleccion1=false, seleccion2=false,
+                seleccion3=false, seleccion4=false" class="toggler" v-bind:title="'Ir a ' + titleClubs">
+                {{titleSelecciones.toUpperCase()}} <i class="fas fa-undo"></i></h3>
+
+            <div v-if="!equipo1.name">
+                <small class="team">Selección 1</small>
+
+                <a href="#" class="botonPropio b01" title="Elige tu Leyenda a voleo" @click="voleo1">
+                    <i class="fas fa-futbol"></i>{{title1.toUpperCase()}}</a>
+                <a href="#" class="botonPropio b02" title="Elige tu Leyenda"
+                    @click="seleccion1=false, seleccion2=false, seleccion3=true, seleccion4=false">
+                    <i class="fas fa-trophy"></i>{{title2.toUpperCase()}}</a>
+            </div>
+
+            <div v-if="equipo1.name.length>1" class="seleccionado">
+                <small class="team">Selección 1</small>
+                <span class="botonPropio" @click="equipo1.name='', equipo1.escudo=''"
+                    v-bind:title="'Haz click aquí para deseleccionar el ' + equipo1.name">X</span>
+                <img v-bind:src="'./img/' + equipo1.escudo + '.png'" alt="'Escudo del equipo:'  + equipo1.name"
+                    class="escudoSeleccion">
+                <h1>{{equipo1.name}}</h1>
+            </div>
+
+            <div v-if="!equipo2.name">
+                <small class="team">Selección 2</small>
+
+                <a href="#" class="botonPropio b03" title="Elige tu Leyenda a voleo" @click="voleo2">
+                    <i class="fas fa-futbol"></i>{{title1.toUpperCase()}}</a>
+                <a href="#" class="botonPropio b04" title="Elige tu Leyenda"
+                    @click="seleccion1=false, seleccion2=false, seleccion3=false, seleccion4=true">
+                    <i class="fas fa-trophy"></i>{{title2.toUpperCase()}}</a>
+            </div>
+
+            <div v-if="equipo2.name.length>1" class="seleccionado">
+                <small class="team">Selección 2</small>
+                <span class="botonPropio" @click="equipo2.name='', equipo2.escudo=''"
+                    v-bind:title="'Haz click aquí para deseleccionar el ' + equipo2.name">X</span>
+                <img v-bind:src="'./img/' + equipo2.escudo + '.png'" alt="'Escudo del equipo:'  + equipo2.name"
+                    class="escudoSeleccion">
+                <h1>{{equipo2.name}}</h1>
+            </div>
+        </div>
+        </div>
+        <!-- CUADROS DE SELECCIÓN 'LEYENDA' -->
+        <div v-if="seleccion1" class="player1">
+            <div v-for="item in clubes" @click="equipo1.name=item.name, equipo1.escudo=item.escudo, seleccion1=false">
+                <img v-bind:src="'./img/' + item.escudo + '.png'" alt="'Escudo del equipo:'  + item.name">
+                <small>{{item.name}}</small>
+            </div>
+        </div>
+        <div v-if="seleccion2" class="player2">
+            <div v-for="item in clubes" @click="equipo2.name=item.name, equipo2.escudo=item.escudo, seleccion2=false">
+                <img v-bind:src="'./img/' + item.escudo + '.png'" alt="'Escudo del equipo:'  + item.name">
+                <small>{{item.name}}</small>
+            </div>
+        </div>
+        <div v-if="seleccion3" class="player1">
+            <div v-for="item in selecciones"
+                @click="equipo1.name=item.name, equipo1.escudo=item.escudo, seleccion3=false">
+                <img v-bind:src="'./img/' + item.escudo + '.png'" alt="'Escudo del equipo:'  + item.name"
+                    class="imgSelecciones">
+                <small>{{item.name}}</small>
+            </div>
+        </div>
+        <div v-if="seleccion4" class="player2">
+            <div v-for="item in selecciones"
+                @click="equipo2.name=item.name, equipo2.escudo=item.escudo, seleccion4=false">
+                <img v-bind:src="'./img/' + item.escudo + '.png'" alt="'Escudo del equipo:'  + item.name"
+                    class="imgSelecciones">
+                <small>{{item.name}}</small>
+            </div>
+        </div>
+    </section>
+
+    <footer><small>Copyright ManeRomero 2019 <a href="github.com/ManeRomero">Mi gitHub!</a></small></footer>
+    <script src="./Vue.js"></script>
+</body>
+
+</html>
